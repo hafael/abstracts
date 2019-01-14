@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Repositories;
+
+use Hafael\Abstracts\Repositories\AbstractRepository;
+use DummyRootNamespace\DummyNamespace\Models\DummyResource;
+use DummyRootNamespace\DummyNamespace\Repositories\Contracts\DummyResourceRepositoryContract;
+
+
+class DummyClass extends AbstractRepository implements DummyResourceRepositoryContract
+{
+    /**
+     * @param DummyResource $model
+     */
+    public function __construct(DummyResource $model)
+    {
+        $this->model = $model;
+    }
+}

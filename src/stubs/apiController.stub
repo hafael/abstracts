@@ -1,0 +1,91 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Http\Controllers\Api;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use League\Fractal\Manager;
+use DummyRootNamespace\Abstracts\Http\Controllers\Api\BaseController;
+
+class DummyClassController extends BaseController
+{
+    /**
+     * @param Manager $fractal
+     */
+    public function __construct(Manager $fractal)
+    {
+        $this->fractal = $fractal;
+        if(Input::get('include')) {
+            $this->fractal->parseIncludes(Input::get('include'));
+        }
+    }
+
+    /**
+     * Display a listing of the DummyResource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        
+        return $this->respondCollectionEmpty();
+    }
+
+    /**
+     * Display a search listing of the DummyResource.
+     *
+     * @param \DummyRootNamespace\DummyNamespace\Http\DummyClassSearchFormRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(DummyClassSearchFormRequest $request)
+    {
+
+        return $this->respondCollectionEmpty();
+    }
+
+
+    /**
+     * Store a newly created DummyResource in storage.
+     *
+     * @param  \DummyRootNamespace\DummyNamespace\Http\DummyClassCreateFormRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(DummyClassCreateFormRequest $request)
+    {
+        return $this->respondCreated();
+    }
+
+    /**
+     * Display the specified DummyResource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return $this->respondItemEmpty();
+    }
+
+    /**
+     * Update the specified DummyResource in storage.
+     *
+     * @param  \DummyRootNamespace\DummyNamespace\Http\DummyClassUpdateFormRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(DummyClassUpdateFormRequest $request, $id)
+    {
+        return $this->respondItemEmpty();
+    }
+
+    /**
+     * Remove the specified DummyResource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        return $this->respondDeleted();
+    }
+}

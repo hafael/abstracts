@@ -1,0 +1,120 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Http\Controllers\Api;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use League\Fractal\Manager;
+use DummyRootNamespace\Abstracts\Http\Controllers\Api\BaseController;
+use DummyRootNamespace\DummyNamespace\Services\DummyResourceService;
+use DummyRootNamespace\DummyNamespace\Http\Transformers\DummyResourceTransformer;
+
+class DummyClassController extends BaseController
+{
+    /**
+     * @param DummyResourceService $dummyResourceService
+     * @param Manager $fractal
+     */
+    public function __construct(DummyResourceService $dummyResourceService, Manager $fractal)
+    {
+        $this->dummyResourceService = $dummyResourceService;
+        $this->fractal = $fractal;
+        if(Input::get('include')) {
+            $this->fractal->parseIncludes(Input::get('include'));
+        }
+    }
+
+    /**
+     * Display a listing of the DummyResource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $response = $this->dummyResourceService->all();
+
+        return $this->respondWithCollectionPaginated($response, new DummyResourceTransformer);
+    }
+
+    /**
+     * Display a search listing of the DummyResource.
+     *
+     * @param \DummyRootNamespace\DummyNamespace\Http\DummyClassSearchFormRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(DummyClassSearchFormRequest $request)
+    {
+
+        $response = $this->dummyResourceService->search($request->query, $this->per_page);
+
+        return $this->respondWithCollectionPaginated($response, new DummyResourceTransformer);
+    }
+
+
+    /**
+     * Store a newly created DummyResource in storage.
+     *
+     * @param  \DummyRootNamespace\DummyNamespace\Http\DummyClassCreateFormRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(DummyClassCreateFormRequest $request)
+    {
+        $data = $request->requestParams();
+        $response = $this->dummyResourceService->create($data);
+
+        if(!$response)
+            return $this->errorInternalError();
+
+        return $this->respondWithItem($response, new DummyResourceTransformer);
+    }
+
+    /**
+     * Display the specified DummyResource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $response = $this->dummyResourceService->show($id);
+
+        if(!$response)
+            return $this->errorNotFound('No DummyResource with id '.$id.' was found.');
+
+        return $this->respondWithItem($response, new DummyResourceTransformer);
+    }
+
+    /**
+     * Update the specified DummyResource in storage.
+     *
+     * @param  \DummyRootNamespace\DummyNamespace\Http\DummyClassUpdateFormRequest $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(DummyClassUpdateFormRequest $request, $id)
+    {
+        $data = $request->requestParams();
+        $update = $this->dummyResourceService->update($data, $id);
+
+        if(!$update)
+            return $this->errorInternalError();
+
+        return $this->show($id);
+    }
+
+    /**
+     * Remove the specified DummyResource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $response = $this->dummyResourceService->delete($id);
+
+        if(!$response)
+            return $this->errorInternalError();
+
+        return $this->respondDeleted();
+    }
+}

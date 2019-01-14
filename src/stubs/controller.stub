@@ -1,0 +1,102 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Http\Controllers;
+
+use DummyRootNamespace\Abstracts\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Input;
+
+class DummyClass extends BaseController
+{
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->per_page = Input::get('limit') ? (int) Input::get('limit') : 15;
+        $this->page = Input::get('page') ? (int) Input::get('page') : 1;
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return view('dummyResource.index', [
+            'perPage' => $this->per_page,
+            'page' => $this->page,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        return view('dummyResource.show', [
+            'perPage' => $this->per_page,
+            'page' => $this->page,
+            'resource_id' => $id,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        return view('dummyResource.edit', [
+            'perPage' => $this->per_page,
+            'page' => $this->page,
+            'resource_id' => $id,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

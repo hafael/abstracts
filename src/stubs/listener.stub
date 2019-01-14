@@ -1,0 +1,38 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Listeners;
+
+use DummyRootNamespace\DummyNamespace\Events\DummyResourceEvent;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use DummyRootNamespace\DummyNamespace\Services\DummyResourceService;
+
+class DummyClass implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * @var DummyResourceService
+     */
+    private $dummyResourceService;
+
+    /**
+     * Create the event listener.
+     * @param DummyResourceService $dummyResourceService
+     */
+    public function __construct(DummyResourceService $dummyResourceService)
+    {
+        $this->dummyResourceService = $dummyResourceService;
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  DummyResourceEvent  $event
+     * @return void
+     */
+    public function handle(DummyResourceEvent $event)
+    {
+        //
+    }
+}

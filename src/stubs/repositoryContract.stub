@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Repositories\Contracts;
+
+use Hafael\Abstracts\Repositories\Contracts\AbstractRepositoryContract;
+
+interface DummyClass extends AbstractRepositoryContract
+{
+    //
+}

@@ -1,0 +1,66 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Services;
+
+
+use DummyRootNamespace\DummyNamespace\Repositories\DummyResourceRepository;
+
+class DummyClass
+{
+    /**
+     * @var DummyResourceRepository
+     */
+    private $dummyResourceRepository;
+
+    /**
+     * @param DummyResourceRepository $dummyResourceRepository
+     */
+    public function __construct(DummyResourceRepository $dummyResourceRepository)
+    {
+        $this->dummyResourceRepository = $dummyResourceRepository;
+    }
+
+    public function all($per_page)
+    {
+        $result = $this->dummyResourceRepository->allPaginated($per_page);
+
+        return $result;
+    }
+
+    public function search($query, $per_page)
+    {
+
+        $response = $this->dummyResourceRepository->searchByQuery($query, $per_page);
+
+        return $response;
+    }
+
+    public function show($id)
+    {
+        $response = $this->dummyResourceRepository->find($id);
+
+        return $response;
+    }
+
+    public function create($data)
+    {
+        $result = $this->dummyResourceRepository->create($data);
+
+        return $result;
+    }
+
+    public function update($data, $id)
+    {
+        $result = $this->dummyResourceRepository->update($data, $id);
+
+        return $result;
+    }
+
+    public function delete($id)
+    {
+        $result = $this->dummyResourceRepository->delete($id);
+
+        return $result;
+    }
+
+}

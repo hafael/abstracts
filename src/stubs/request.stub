@@ -1,0 +1,26 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Http\Requests;
+
+use Hafael\Abstracts\Http\Requests\BaseFormRequest;
+
+class DummyClass extends BaseFormRequest
+{
+    protected $requestRules = [
+        //
+    ];
+
+    protected $requestMessages = [
+        //
+    ];
+
+    protected $attributeMap = [
+        //
+    ];
+
+    protected $availableAttributes = [
+        //
+    ];
+
+
+}

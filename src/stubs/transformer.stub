@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Http\Transformers;
+
+use League\Fractal\TransformerAbstract;
+use DummyRootNamespace\DummyNamespace\Models\DummyResource;
+
+class DummyClass extends TransformerAbstract
+{
+
+    public function transform(DummyResource $dummyResource)
+    {
+        return $dummyResource->toArray();
+    }
+
+}

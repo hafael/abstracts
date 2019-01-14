@@ -1,0 +1,12 @@
+<?php
+
+namespace DummyRootNamespace\DummyNamespace\Policies;
+
+use Hafael\Abstracts\Policies\BasePolicy;
+
+class DummyClass extends BasePolicy
+{
+    
+    protected $resourceName = 'dummyNamespace';
+
+}
