@@ -1,6 +1,6 @@
 {
     "name": "hafael/abstracts",
-    "description": "Laravel API Abstracts",
+    "description": "Laravel Abstracts Code Generator",
     "type": "library",
     "authors": [
         {
@@ -8,6 +8,7 @@
             "email": "villa655321verde@gmail.com"
         }
     ],
+    "license": "Apache-2.0",
     "minimum-stability": "dev",
     "require": {
         "laravel/framework": "^5.3",
@@ -15,6 +16,11 @@
         "hafael/laraflake": "^1.2",
         "tucker-eric/eloquentfilter": "^1.2",
         "sofa/eloquence": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hafael\\Abstracts\\": "src/"
+        }
     },
     "extra": {
         "laravel": {
