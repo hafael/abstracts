@@ -32,7 +32,6 @@ class Bootstrap extends Command
         $this->globalNamespace = null;
         $this->resourceName = null;
         $this->className = null;
-        $this->resourcePluralName = null;
         $this->resourcePath = null;
     }
 
@@ -48,9 +47,8 @@ class Bootstrap extends Command
     public function validateResourceName($resourceName)
     {
         $this->resourceName = Str::ucfirst(Str::camel(class_basename($resourceName)));
-        $this->resourcePluralName = Str::plural($this->resourceName);
 
-        $this->resourcePath = base_path($this->option('folder').'/'.$this->resourcePluralName);
+        $this->resourcePath = base_path($this->option('folder').'/'.$this->resourceName);
 
         if (!$this->files->isDirectory(base_path($this->option('folder')))) {
             $this->error('`'.$this->resourcePath.'` is not a valid directory.');
@@ -149,11 +147,11 @@ class Bootstrap extends Command
         );
 
         $stub = str_replace(
-            'DummyNamespace', $this->resourcePluralName, $stub
+            'DummyNamespace', $this->resourceName, $stub
         );
 
         $stub = str_replace(
-            'dummyNamespace', strtolower($this->resourcePluralName), $stub
+            'dummyNamespace', strtolower($this->resourceName), $stub
         );
 
         $stub = str_replace(

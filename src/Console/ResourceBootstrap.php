@@ -126,9 +126,8 @@ class ResourceBootstrap extends Bootstrap
     public function validateResourceName($resourceName)
     {
         $this->resourceName = Str::ucfirst(Str::camel(class_basename($resourceName)));
-        $this->resourcePluralName = Str::plural($this->resourceName);
 
-        $this->resourcePath = base_path($this->option('folder').'/'.$this->resourcePluralName);
+        $this->resourcePath = base_path($this->option('folder').'/'.$this->resourceName);
 
         if (!$this->files->isDirectory(base_path($this->option('folder')))) {
             $this->error('`'.$this->resourcePath.'` não é um diretório válido.');
