@@ -11,11 +11,11 @@
     "license": "Apache-2.0",
     "minimum-stability": "dev",
     "require": {
-        "laravel/framework": "^5.3",
+        "laravel/framework": "^5.3|^6.0",
         "league/fractal": "^0.17.0",
         "hafael/laraflake": "^1.2",
         "tucker-eric/eloquentfilter": "^1.2",
-        "sofa/eloquence": "^5.6"
+        "sofa/eloquence": "^6.0"
     },
     "autoload": {
         "psr-4": {
