@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "minimum-stability": "dev",
     "require": {
-        "laravel/framework": "^7.0",
+        "laravel/framework": "^7.0|^8.0",
         "league/fractal": "^0.19",
         "hafael/laraflake": "^1.2",
         "tucker-eric/eloquentfilter": "^2.4",
