@@ -13,9 +13,7 @@
     "require": {
         "laravel/framework": "^7.4|^8.1|^9.0",
         "league/fractal": "^0.19",
-        "hafael/laraflake": "^1.2",
-        "tucker-eric/eloquentfilter": "^2.4",
-        "sofa/eloquence-base": "^7.0"
+        "hafael/laraflake": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -31,5 +29,9 @@
                 "Hafael\\Abstracts\\AbstractsServiceProvider"
             ]
         }
+    },
+    "suggest": {
+        "tucker-eric/eloquentfilter": "Allows more advanced eloquent model filters",
+        "sofa/eloquence-base": "Needed to support full text search"
     }
 }
